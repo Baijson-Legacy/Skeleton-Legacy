@@ -1,0 +1,16 @@
+[
+    {
+      "modid": "skeleton",
+      "name": "Skeleton",
+      "description": "Baij's library, used as both a library for his mods and modpacks.",
+      "version": "${version}",
+      "mcversion": "${mcversion}",
+      "url": "",
+      "updateUrl": "",
+      "authorList": ["Baijson"],
+      "credits": "",
+      "logoFile": "",
+      "screenshots": [],
+      "dependencies": []
+    }
+]
