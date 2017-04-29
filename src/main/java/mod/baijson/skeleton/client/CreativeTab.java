@@ -56,11 +56,11 @@ public class CreativeTab extends CreativeTabs {
     }
 
     @Override
-    public Item getTabIconItem() {
-        if (this.image != null && this.image.getItem() != null) {
-            return this.image.getItem();
+    public ItemStack getTabIconItem() {
+        if (this.image != null && this.image != null) {
+            return this.image;
         }
-        return new ItemStack(Blocks.COMMAND_BLOCK).getItem();
+        return new ItemStack(Blocks.COMMAND_BLOCK);
     }
 
     /**
