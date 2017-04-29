@@ -29,16 +29,18 @@ public class LazyColorHandler {
     public static void load(Class<? extends IMarkedLazy> clazz) {
         try {
             for (Field field : clazz.getFields()) {
-                if (Block.class.isAssignableFrom(field.get(null).getClass())) {
-                    Block block = (Block) field.get(null);
-                    if (block instanceof IColorAware) {
-                        register(block);
+                if (field.get(null) != null) {
+                    if (Block.class.isAssignableFrom(field.get(null).getClass())) {
+                        Block block = (Block) field.get(null);
+                        if (block instanceof IColorAware) {
+                            register(block);
+                        }
                     }
-                }
-                if (Item.class.isAssignableFrom(field.get(null).getClass())) {
-                    Item item = (Item) field.get(null);
-                    if (item instanceof IColorAware) {
-                        register(item);
+                    if (Item.class.isAssignableFrom(field.get(null).getClass())) {
+                        Item item = (Item) field.get(null);
+                        if (item instanceof IColorAware) {
+                            register(item);
+                        }
                     }
                 }
             }

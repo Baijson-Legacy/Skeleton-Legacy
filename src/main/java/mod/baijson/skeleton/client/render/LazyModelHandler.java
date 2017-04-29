@@ -23,27 +23,29 @@ public class LazyModelHandler {
     public static void load(Class<? extends IMarkedLazy> clazz) {
         try {
             for (Field field : clazz.getFields()) {
-                if (Block.class.isAssignableFrom(field.get(null).getClass())) {
-                    Block block = (Block) field.get(null);
-                    if (block instanceof IModelAware || block instanceof IStateAware) {
-                        if (block instanceof IModelAware) {
-                            Item item = Item.getItemFromBlock(block);
-                            if (item instanceof ItemBlock) {
-                                register(item, ((IModelAware) block).getModelVariants());
+                if (field.get(null) != null) {
+                    if (Block.class.isAssignableFrom(field.get(null).getClass())) {
+                        Block block = (Block) field.get(null);
+                        if (block instanceof IModelAware || block instanceof IStateAware) {
+                            if (block instanceof IModelAware) {
+                                Item item = Item.getItemFromBlock(block);
+                                if (item instanceof ItemBlock) {
+                                    register(item, ((IModelAware) block).getModelVariants());
+                                }
+                                ModelBakery.registerItemVariants(item, item.getRegistryName());
                             }
-                            ModelBakery.registerItemVariants(item, item.getRegistryName());
+                            if (block instanceof IStateAware) {
+                                ModelLoader.setCustomStateMapper(block, ((IStateAware) block).getStateMapper());
+                            }
+                        } else {
+                            register(Item.getItemFromBlock(block));
                         }
-                        if (block instanceof IStateAware) {
-                            ModelLoader.setCustomStateMapper(block, ((IStateAware) block).getStateMapper());
-                        }
-                    } else {
-                        register(Item.getItemFromBlock(block));
                     }
-                }
-                if (Item.class.isAssignableFrom(field.get(null).getClass())) {
-                    Item item = (Item) field.get(null);
-                    if (item instanceof IModelAware) {
-                        register(item, ((IModelAware) item).getModelVariants());
+                    if (Item.class.isAssignableFrom(field.get(null).getClass())) {
+                        Item item = (Item) field.get(null);
+                        if (item instanceof IModelAware) {
+                            register(item, ((IModelAware) item).getModelVariants());
+                        }
                     }
                 }
             }

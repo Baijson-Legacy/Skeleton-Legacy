@@ -42,14 +42,6 @@ public class CreativeTab extends CreativeTabs {
         this(index, label, new ItemStack(Blocks.COMMAND_BLOCK));
     }
 
-    @Override
-    public Item getTabIconItem() {
-        if (this.image != null && this.image.getItem() != null) {
-            return this.image.getItem();
-        }
-        return new ItemStack(Blocks.COMMAND_BLOCK).getItem();
-    }
-
     /**
      * @param index
      * @param label
@@ -61,6 +53,14 @@ public class CreativeTab extends CreativeTabs {
         if (image.getItem() != null) {
             setTabIconItem(image);
         }
+    }
+
+    @Override
+    public Item getTabIconItem() {
+        if (this.image != null && this.image.getItem() != null) {
+            return this.image.getItem();
+        }
+        return new ItemStack(Blocks.COMMAND_BLOCK).getItem();
     }
 
     /**

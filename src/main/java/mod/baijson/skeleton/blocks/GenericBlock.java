@@ -1,16 +1,11 @@
 package mod.baijson.skeleton.blocks;
 
-import mod.baijson.skeleton.client.Tooltip;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-
-import java.util.List;
 
 /**
  * Created by Baijson.

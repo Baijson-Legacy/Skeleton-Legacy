@@ -13,14 +13,14 @@ import java.awt.*;
 public interface IColorAware {
 
     /**
-     * @param value
-     */
-    void setColor(Color value);
-
-    /**
      * @return
      */
     int getColor();
+
+    /**
+     * @param value
+     */
+    void setColor(Color value);
 
     /**
      * @param index
