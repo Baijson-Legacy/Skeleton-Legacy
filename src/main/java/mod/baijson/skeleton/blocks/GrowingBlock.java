@@ -20,7 +20,7 @@ import java.util.Random;
  */
 abstract public class GrowingBlock extends GenericBlock implements IGrowingBlock {
 
-    public static final PropertyInteger STAGES = PropertyInteger.create("stages", 0, 3);
+    public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 3);
 
     /**
      * @param resource
@@ -55,7 +55,7 @@ abstract public class GrowingBlock extends GenericBlock implements IGrowingBlock
      */
     @Override
     public int getMetaFromState(IBlockState state) {
-        return state.getValue(STAGES);
+        return state.getValue(STAGE);
     }
 
     /**
@@ -65,7 +65,7 @@ abstract public class GrowingBlock extends GenericBlock implements IGrowingBlock
     @Override
     @SuppressWarnings("deprecation")
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(STAGES, meta);
+        return this.getDefaultState().withProperty(STAGE, meta);
     }
 
     /**
@@ -73,7 +73,7 @@ abstract public class GrowingBlock extends GenericBlock implements IGrowingBlock
      */
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{STAGES});
+        return new BlockStateContainer(this, new IProperty[]{STAGE});
     }
 
 
@@ -94,7 +94,7 @@ abstract public class GrowingBlock extends GenericBlock implements IGrowingBlock
      * @param flags
      */
     public void setCurrentAge(World world, BlockPos position, int value, int flags) {
-        world.setBlockState(position, this.getDefaultState().withProperty(STAGES, value), flags);
+        world.setBlockState(position, this.getDefaultState().withProperty(STAGE, value), flags);
     }
 
 
@@ -104,7 +104,7 @@ abstract public class GrowingBlock extends GenericBlock implements IGrowingBlock
      * @return
      */
     public IBlockState getRandomState(IBlockState state, Random random) {
-        return this.getDefaultState().withProperty(STAGES, random.nextInt(getMaximumAge()));
+        return this.getDefaultState().withProperty(STAGE, random.nextInt(getMaximumAge()));
     }
 
     /**
@@ -113,7 +113,7 @@ abstract public class GrowingBlock extends GenericBlock implements IGrowingBlock
      */
     @Override
     public int getCurrentAge(IBlockState state) {
-        return state.getValue(STAGES);
+        return state.getValue(STAGE);
     }
 
     /**
@@ -121,7 +121,7 @@ abstract public class GrowingBlock extends GenericBlock implements IGrowingBlock
      */
     @Override
     public int getMaximumAge() {
-        return STAGES.getAllowedValues().size() - 1;
+        return STAGE.getAllowedValues().size() - 1;
     }
 
 
