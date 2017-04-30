@@ -10,7 +10,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Created by Baijson.
  */
-@SideOnly(Side.CLIENT)
 public class CreativeTab extends CreativeTabs {
 
     private ItemStack image;
@@ -55,7 +54,11 @@ public class CreativeTab extends CreativeTabs {
         }
     }
 
+    /**
+     * @return
+     */
     @Override
+    @SideOnly(Side.CLIENT)
     public Item getTabIconItem() {
         if (this.image != null && this.image.getItem() != null) {
             return this.image.getItem();
