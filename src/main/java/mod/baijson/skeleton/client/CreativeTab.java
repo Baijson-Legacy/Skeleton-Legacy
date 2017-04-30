@@ -2,7 +2,6 @@ package mod.baijson.skeleton.client;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -10,7 +9,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Created by Baijson.
  */
-@SideOnly(Side.CLIENT)
 public class CreativeTab extends CreativeTabs {
 
     private ItemStack image;
@@ -55,7 +53,11 @@ public class CreativeTab extends CreativeTabs {
         }
     }
 
+    /**
+     * @return
+     */
     @Override
+    @SideOnly(Side.CLIENT)
     public ItemStack getTabIconItem() {
         if (this.image != null && this.image != null) {
             return this.image;
