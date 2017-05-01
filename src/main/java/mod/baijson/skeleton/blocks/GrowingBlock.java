@@ -104,7 +104,7 @@ abstract public class GrowingBlock extends GenericBlock implements IGrowingBlock
      * @return
      */
     public IBlockState getRandomState(IBlockState state, Random random) {
-        return this.getDefaultState().withProperty(STAGE, random.nextInt(getMaximumAge()));
+        return this.getDefaultState().withProperty(STAGE, random.nextInt(getMaximumAge() + 1));
     }
 
     /**
