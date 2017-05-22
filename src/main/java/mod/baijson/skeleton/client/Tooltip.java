@@ -33,18 +33,26 @@ public class Tooltip {
      */
     @SideOnly(Side.CLIENT)
     static public void insert(List<String> tooltip, String message, @Nullable Object... parameters) {
-
-        message = local(message).replaceAll("&", "\u00a7");
-
         Object[] values = new String[parameters.length];
         for (int i = 0; i < parameters.length; i++) {
             values[i] = local(parameters[i].toString()).replaceAll("&", "\u00a7");
         }
-        if (values != null && values.length > 0) {
-            message = String.format(message, values);
-        }
+        tooltip.add(local(message, values).replaceAll("&", "\u00a7"));
+    }
 
-        tooltip.add(message);
+    /**
+     * @param checked
+     * @return
+     */
+    public static String checked(boolean checked) {
+        return local("skeleton.tooltip.checked." + (checked ? "1" : "0"));
+    }
+
+    /**
+     * @return
+     */
+    public static String bullets() {
+        return local("skeleton.tooltip.bullets");
     }
 
     /**
